@@ -297,38 +297,37 @@ kubectl logs -n keda-system -l app=keda
   <li><strong>Test Scaling</strong>: Send messages to RabbitMQ and verify that KEDA scales your pods based on the queue length.</li>
 </ol>
 
-<body style="font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; background-color: #f9f9f9; color: #333;">
-    <h1 style="color: #2c3e50;">Testing RabbitMQ</h1>
-    <p>This document guides you through the steps to test sending messages to RabbitMQ.</p>
+<h1>Testing RabbitMQ</h1>
+<p>This document guides you through the steps to test sending messages to RabbitMQ.</p>
 
-    <h2 style="color: #2c3e50;">1. Access the RabbitMQ Management Interface</h2>
-    <p>Open your browser and go to:</p>
-    <pre style="background-color: #ecf0f1; padding: 10px; border-radius: 5px; overflow-x: auto;"><code>http://localhost:15672</code></pre>
-    <p>Use the following credentials to log in:</p>
-    <ul>
-        <li><strong>Username:</strong> user</li>
-        <li><strong>Password:</strong> (retrieve the password using the command below)</li>
-    </ul>
-    <pre style="background-color: #ecf0f1; padding: 10px; border-radius: 5px; overflow-x: auto;"><code>kubectl get secret --namespace messaging rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 --decode; echo</code></pre>
+<h2>1. Access the RabbitMQ Management Interface</h2>
+<p>Open your browser and go to:</p>
+<pre><code>http://localhost:15672</code></pre>
+<p>Use the following credentials to log in:</p>
+<ul>
+    <li><strong>Username:</strong> user</li>
+    <li><strong>Password:</strong> (retrieve the password using the command below)</li>
+</ul>
+<pre><code>kubectl get secret --namespace messaging rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 --decode; echo</code></pre>
 
-    <h2 style="color: #2c3e50;">2. Create a Queue</h2>
-    <p>In the management interface, go to the <strong>Queues</strong> tab and create a new queue:</p>
-    <ol>
-        <li>Enter a name for your queue (e.g., <strong>my_queue</strong>).</li>
-        <li>Click on <strong>Add queue</strong>.</li>
-    </ol>
+<h2>2. Create a Queue</h2>
+<p>In the management interface, go to the <strong>Queues</strong> tab and create a new queue:</p>
+<ol>
+    <li>Enter a name for your queue (e.g., <strong>my_queue</strong>).</li>
+    <li>Click on <strong>Add queue</strong>.</li>
+</ol>
 
-    <h2 style="color: #2c3e50;">3. Send a Message</h2>
-    <p>To send a message to the queue, follow these steps:</p>
-    <ol>
-        <li>Once the queue is created, click on its name.</li>
-        <li>In the <strong>Publish message</strong> section, enter the message in the <strong>Payload</strong> field.</li>
-        <li>Click on <strong>Publish message</strong> to send the message.</li>
-    </ol>
+<h2>3. Send a Message</h2>
+<p>To send a message to the queue, follow these steps:</p>
+<ol>
+    <li>Once the queue is created, click on its name.</li>
+    <li>In the <strong>Publish message</strong> section, enter the message in the <strong>Payload</strong> field.</li>
+    <li>Click on <strong>Publish message</strong> to send the message.</li>
+</ol>
 
-    <h2 style="color: #2c3e50;">4. Send a Message with a Python Script</h2>
-    <p>If you prefer to use a script, here’s an example in Python:</p>
-    <pre style="background-color: #ecf0f1; padding: 10px; border-radius: 5px; overflow-x: auto;"><code>
+<h2>4. Send a Message with a Python Script</h2>
+<p>If you prefer to use a script, here’s an example in Python:</p>
+<pre><code>
 import pika
 
 # Connect to RabbitMQ
@@ -344,17 +343,15 @@ print(" [x] Message sent")
 
 # Close the connection
 connection.close()
-    </code></pre>
+</code></pre>
 
-    <h2 style="color: #2c3e50;">5. Send a Message with curl</h2>
-    <p>You can also send a message using curl:</p>
-    <pre style="background-color: #ecf0f1; padding: 10px; border-radius: 5px; overflow-x: auto;"><code>curl -u user:<password> -H "Content-Type: application/json" -X POST -d '{"properties":{},"routing_key":"my_queue","payload":"Hello RabbitMQ!","payload_encoding":"string"}' http://localhost:15672/api/exchanges/%2F/publish</code></pre>
-    <p>Make sure to replace <code>&lt;password&gt;</code> with the password you retrieved earlier.</p>
+<h2>5. Send a Message with curl</h2>
+<p>You can also send a message using curl:</p>
+<pre><code>curl -u user:<password> -H "Content-Type: application/json" -X POST -d '{"properties":{},"routing_key":"my_queue","payload":"Hello RabbitMQ!","payload_encoding":"string"}' http://localhost:15672/api/exchanges/%2F/publish</code></pre>
+<p>Make sure to replace <code>&lt;password&gt;</code> with the password you retrieved earlier.</p>
 
-    <h2 style="color: #2c3e50;">Conclusion</h2>
-    <p>You now have several methods to send messages to RabbitMQ. Choose the one that works best for you!</p>
-</body>
-
+<h2>Conclusion</h2>
+<p>You now have several methods to send messages to RabbitMQ. Choose the one that works best for you!</p>
 
 <hr>
 
