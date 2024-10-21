@@ -2,7 +2,7 @@
 k3d-rabbitmq-keda-tutorial for learning how work messaging and auto-scale </br>
 
 
-  <title>Kubernetes Local Cluster with k3d, RabbitMQ, KEDA, and Dashboard</title>
+  <strong><h1>Kubernetes Local Cluster with k3d, RabbitMQ, KEDA, and Dashboard</h1></strong>
 
 
 
