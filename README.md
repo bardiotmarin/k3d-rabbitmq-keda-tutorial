@@ -4,10 +4,6 @@ k3d-rabbitmq-keda-tutorial for learning how work messaging and auto-scale </br>
 
   <strong><h1>Kubernetes Local Cluster with k3d, RabbitMQ, KEDA, and Dashboard</h1></strong>
 
-
-
-<h1>Kubernetes Local Cluster with k3d, RabbitMQ, KEDA, and Dashboard</h1>
-
 <p>This tutorial guides you through setting up a local Kubernetes cluster using <strong>k3d</strong>, installing <strong>RabbitMQ</strong> for message queuing, configuring <strong>KEDA</strong> for autoscaling, and deploying the <strong>Kubernetes Dashboard</strong> for managing the cluster visually.</p>
 
 <h2>Prerequisites</h2>
